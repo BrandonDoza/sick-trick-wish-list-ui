@@ -1,11 +1,12 @@
 import { useState } from "react"
+import './Form.css'
 
 export default function Form({setTricks}) {
     const [formData, setFormData] = useState({
         stance: '',
-        trickName: '',
+        name: '',
         obstacle: '',
-        link: ''
+        tutorial: ''
     })
 
     function submitTrick(e) {
@@ -24,7 +25,7 @@ export default function Form({setTricks}) {
     }
 
     return (
-        <form>          
+        <form className="form">          
           <select
             name="stance"
             value={formData.stance}
@@ -37,8 +38,8 @@ export default function Form({setTricks}) {
           <input 
           type='text'
           placeholder="Name of Trick"
-          name='trickName'
-          value={formData.trickName}
+          name='name'
+          value={formData.name}
           onChange={handleChange}
           />
           <select
@@ -56,8 +57,8 @@ export default function Form({setTricks}) {
           <input 
           type='text'
           placeholder="Link to Tutorial"
-          name='link'
-          value={formData.link}
+          name='tutorial'
+          value={formData.tutorial}
           onChange={handleChange}
           />
           <button onClick={submitTrick}>Send It!</button>
