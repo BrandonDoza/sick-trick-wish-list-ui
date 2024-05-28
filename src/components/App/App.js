@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { getTricks } from '../apiCalls'
+import Tricks  from '../Tricks'
 
 
 
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <h1>Sick Trick Wish List</h1>
+      <Tricks tricks={tricks} />
     </div>
   );
 }
