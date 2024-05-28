@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { postTrick } from './apiCalls'
 import './Form.css'
 
 export default function Form({setTricks}) {
@@ -11,8 +12,12 @@ export default function Form({setTricks}) {
 
     function submitTrick(e) {
         e.preventDefault()
-        setTricks(prevTricks => {
-            return [...prevTricks, formData]
+        postTrick(formData)
+        .then(data => {
+            setTricks(prevTricks => {
+                return [...prevTricks, data]
+        })
+        
         })
     }
 
