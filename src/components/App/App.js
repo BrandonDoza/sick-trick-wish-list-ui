@@ -3,6 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { getTricks } from '../apiCalls'
 import Tricks  from '../Tricks'
+import Form from '../Form'
 
 
 
@@ -12,9 +13,11 @@ function App() {
     getTricks()
     .then(data => setTricks(data))
   }, [])
+  console.log('tricks', tricks)
   return (
     <div className="App">
       <h1>Sick Trick Wish List</h1>
+      <Form setTricks={setTricks}/>
       <Tricks tricks={tricks} />
     </div>
   );
