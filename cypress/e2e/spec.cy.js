@@ -42,6 +42,15 @@ describe('main page', () => {
     cy.get('.trick-card').last().contains('frontside 50-50, backside 180 out')
   })
   it('should add a trick and display all tricks on the DOM', () => {
+    cy.intercept('POST', 'http://localhost:3001/api/v1/tricks', {
+      statusCode: 200,
+      body: {
+        "stance": "switch",
+        "name": "Dinner Roll",
+        "obstacle": "Ledge",
+        "tutorial": "sdfgsdfg"    
+      }
+    })
     cy.get('select[name="stance"]').select('regular')
     cy.get('input[name="name"]').type('Dinner Roll')
     cy.get('select[name="obstacle"]').select('Rail')
@@ -49,7 +58,7 @@ describe('main page', () => {
     cy.get('button').click()
     cy.get('.tricks-display').find('.trick-card').should('have.length', 4)
     cy.get('.trick-card').first().contains('treflip')
-    // cy.get('.trick-card').last().contains('Dinner Roll')
+    cy.get('.trick-card').last().contains('Dinner Roll')
   })
   
 })
